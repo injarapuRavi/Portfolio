@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Portfolio</title> 
+        <link rel="stylesheet" href="Portfolio.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="bg-image"></div> <!--added-->
+        <div class="container">
+            <nav>
+                <img src="Images/Ravi1.jpg" class="logo">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Software Engineer</p>
+                <h1>Hi , I'm <span>Ravi Injarapu  </span><br> from Andhra,India.
+                </h1>
+            </div>
+        </div>
+        </div>
+        <!-- -----------about----------- -->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="Images/user2.jpg">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub">About Me</h1>
+                        <p>Aspiring Software Engineer with a strong foundation in problem-solving, logical thinking, and core programming concepts. Eager to contribute to real-world projects, learn from experienced teams, and grow within a collaborative and challenging environment. Known for being a quick learner, adaptable, and committed to continuous personal and professional development.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('education')">Education</p>
+                            <p class="tab-links" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links"onclick="opentab('experience')">Experience</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="education">
+                            <ul>
+                                <li><span>Bachelor of Technology</span><br>MVGR College of Engineering , Vizianagaram<br>2021-2025 <br><span style="color: aliceblue;">7.15/10 CGPA</span></li>
+                                <li><span>Board of Intermeddiate Education</span><br>Sri Chaitanya Junior College , Tuni<br>2019-2021 <br><span style="color: aliceblue;">920/1000 Marks</span></li>
+                                <li><span>Board of Secondary Education</span><br>Gowtham Model School , Payakaraopeta<br>2018-2019 <br> <span style="color: aliceblue;">9.8/10 GPA</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="skills">
+                            <ul>
+                                <li><span>Web Development</span><br><span style="color: aliceblue;">Using HTML,CSS and JavaScript</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li>Fresher<br><span style="color: aliceblue;">"eagerly waiting for the opportunity"</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ---------javascript---------- -->
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+        </script>
+    </body>
+</html>
