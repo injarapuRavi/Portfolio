@@ -415,46 +415,90 @@ form .btn2{
 .copyright i{
     color: #ff004f;
 }
+
+
+
+@keyframes heroZoom{
+    from { transform: scale(1); }
+    to   { transform: scale(1.05); }
+}
+
+
+
+
+
 /* ================= MOBILE RESPONSIVE ================= */
 @media only screen and (max-width: 768px){
-     #header{
-    height: 100vh;
-}
 
-#header .bg-image{
-    background-image: url(Images/mobile_1.jpg);
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-}
+/* ===== HEADER STRUCTURE ===== */
 #header{
     position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
-
 #header .bg-image{
-    z-index: 1;
-    transition: z-index 0s, transform 0.4s ease;
+    animation: heroZoom 8s ease-in-out infinite alternate;
 }
 
+
+
+/* Background image layer */
+#header .bg-image{
+    position: absolute;
+    inset: 0;
+    background-image: url(Images/mobile_1.jpg);
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    opacity: 0.85;
+    z-index: 0;
+}
+
+/* Content layer */
 #header .container{
     position: relative;
-    z-index: 2;
-    transition: z-index 0s;
-}
-
-/* Hover effect */
-#header:hover .bg-image{
-    z-index: 3;
-    transform: scale(1.05);
-}
-
-#header:hover .container{
+    height: 100%;
     z-index: 1;
 }
 
+/* ===== NAV → TOP LEFT ===== */
+nav{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-/* Global */
+nav ul{
+    margin-top: 10px;
+}
+
+nav ul li{
+    display: block;
+    margin: 6px 0;
+}
+
+/* ===== HERO TEXT → BOTTOM RIGHT ===== */
+.header-text{
+    position: absolute;
+    bottom: 25px;
+    left: 20px;   /* ← move to left */
+    right: auto;
+    max-width: 70%;
+    text-align: left;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.header-text h1{
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+/* ===== GLOBAL ===== */
 .container{
     padding: 0 20px;
 }
@@ -464,33 +508,7 @@ form .btn2{
     text-align: center;
 }
 
-/* Header */
-.header-text{
-    margin-top: 40%;
-    font-size: 18px;
-    text-align: center;
-}
-
-.header-text h1{
-    font-size: 32px;
-}
-
-/* Navigation */
-nav{
-    flex-direction: column;
-    align-items: center;
-}
-
-nav ul{
-    margin-top: 10px;
-}
-
-nav ul li{
-    display: block;
-    margin: 8px 0;
-}
-
-/* About Section */
+/* ===== ABOUT ===== */
 #about{
     padding: 40px 20px;
 }
@@ -518,7 +536,7 @@ nav ul li{
     margin-right: 0;
 }
 
-/* Services */
+/* ===== SERVICES ===== */
 .services-list{
     grid-template-columns: 1fr;
     gap: 20px;
@@ -528,13 +546,13 @@ nav ul li{
     padding: 25px;
 }
 
-/* Portfolio */
+/* ===== PORTFOLIO ===== */
 .work-list{
     grid-template-columns: 1fr;
     gap: 20px;
 }
 
-/* Contact */
+/* ===== CONTACT ===== */
 #contact{
     padding: 40px 20px;
 }
