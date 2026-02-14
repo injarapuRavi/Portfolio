@@ -15,11 +15,11 @@
             <nav>
                 <img src="Images/Ravi1.jpg" class="logo">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-text">
@@ -147,10 +147,10 @@
                     <a href="Images/Injarapu Ravi CV.pdf" download target="_blank" class="btn btn2">Download CV</a>
                 </div>
                 <div class="contact-right">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" required></textarea>
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" placeholder="Your Message" required></textarea>
                         <button type="submit" class="btn btn2">Send Message</button>
                     </form>
                 </div>
@@ -174,5 +174,32 @@
                 document.getElementById(tabname).classList.add("active-tab");
             }
         </script>
+        <script>
+            const scriptURL ='https://script.google.com/macros/s/AKfycby2FA-kgVo9aVnK2g73UQ8YeEbQQ-DG1hI24yEBNYR34GspkQzrNbSC4MsrEwniVWwt/exec'
+            const form = document.forms['submit-to-google-sheet']
+            
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+            
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    alert("Message sent successfully ✅")
+            
+                    // 🔥 clear form
+                    form.reset()
+            
+                })
+                .catch(error => {
+                    alert("Error sending message ❌")
+                    console.error(error)
+                })
+            })
+            </script>
+            
     </body>
 </html>
+
+<!--     'https://script.google.com/macros/s/AKfycby2FA-kgVo9aVnK2g73UQ8YeEbQQ-DG1hI24yEBNYR34GspkQzrNbSC4MsrEwniVWwt/exec'   -->
